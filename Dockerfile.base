@@ -18,7 +18,7 @@ RUN apt-get update &&\
 
 ENV GOLANG_VERSION 1.15.7
 
-RUN wget https://golang.org/dl/go1.15.7.linux-amd64.tar.gz &&\
+RUN wget https://golang.org/dl/go1.15.7.linux-amd64.tar.gz --no-check-certificate &&\
     tar -C /usr/local -xzf go1.15.7.linux-amd64.tar.gz
     
 ENV PATH=$PATH:/usr/local/go/bin:/home/openwrt/sdk/staging_dir/host/bin
