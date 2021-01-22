@@ -10,3 +10,5 @@ RUN sudo -iu openwrt wget -nv $SDK_URL &&\
     sudo -iu openwrt sdk/scripts/feeds update -a &&\
     sudo -iu openwrt ln -s ../feeds/base/package/utils sdk/package/utils
 # see: https://dev.openwrt.org/ticket/18552
+
+ADD golang /home/openwrt/sdk/feeds/packages/lang/golang
