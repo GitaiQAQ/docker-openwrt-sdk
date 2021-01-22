@@ -6,6 +6,7 @@ RUN apt-get update &&\
                        git-core subversion wget unzip \
                        ccache libncurses5-dev zlib1g-dev \
                        python gawk \
+                       ca-certificates \
                        sudo groff-base upx-ucl &&\
     apt-get remove -y openssh-client manpages manpages-dev krb5-locales locales &&\
     apt-get -y autoremove &&\
