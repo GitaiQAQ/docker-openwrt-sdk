@@ -5,7 +5,7 @@ RUN apt-get update &&\
                        build-essential \
                        git-core subversion wget unzip \
                        ccache libncurses5-dev zlib1g-dev \
-                       python gawk \
+                       python gawk rsync \
                        ca-certificates \
                        sudo groff-base upx-ucl &&\
     apt-get remove -y openssh-client manpages manpages-dev krb5-locales locales &&\
