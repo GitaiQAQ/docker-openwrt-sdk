@@ -1,17 +1,26 @@
 FROM ubuntu:bionic
 
 RUN apt-get update &&\
-    apt-get install -y build-essential \
+    apt-get install -y --no-install-recommends \
+                       build-essential \
                        git-core subversion wget unzip \
                        ccache libncurses5-dev zlib1g-dev \
-                       golang-1.10-go python gawk \
+                       python gawk \
                        sudo groff-base upx-ucl &&\
     apt-get remove -y openssh-client manpages manpages-dev krb5-locales locales &&\
     apt-get -y autoremove &&\
     apt-get clean &&\
+    rm -rf /var/lib/apt/lists/* &&\
     useradd -m openwrt &&\
     mkdir /go &&\
     chown openwrt /go &&\
     echo 'openwrt ALL=NOPASSWD: ALL' > /etc/sudoers.d/openwrt
-ENV PATH /usr/lib/go-1.10/bin:/home/openwrt/sdk/staging_dir/host/bin:$PATH
+
+ENV GOLANG_VERSION 1.15.7
+
+RUN wget https://golang.org/dl/go1.15.7.linux-amd64.tar.gz &&\
+    tar -C /usr/local -xzf go1.15.7.linux-amd64.tar.gz
+    
+ENV PATH=$PATH:/usr/local/go/bin:/home/openwrt/sdk/staging_dir/host/bin
 ENV GOPATH /go
+
